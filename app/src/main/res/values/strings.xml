@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="ingresar">Ingresar</string>
+    <string name="listaInstructores">Lista de Instructores</string>
+    <string name="listaEspecialidades">Lista de Especialidades</string>
+    <string name="agregarInstructores">Agregar Instructores</string>
+    <string name="title_activity_principal">principal</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="link">
+        <a href="http://201.171.236.126:8080/recuperar.php">Recuperar Contraseña</a>
+    </string>
+
+
+    <string name="guardar">Guardar</string>
+    <string name="nombres">Ingrese nombres</string>
+    <string name="apellidos">Ingrese apellidos</string>
+    <string name="telefono">Ingrese telefono</string>
+    <string name="direccion">Ingrese direccion</string>
+    <string name="correo">Ingrese correo</string>
+    <string name="tipo">Seleccione privilegio</string>
+    <string name="contrasena1">Ingrese contraseña</string>
+    <string name="contrasena2">Repita la contraseña</string>
+    <string name="fecha">Ingrese fecha de nacimiento</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
