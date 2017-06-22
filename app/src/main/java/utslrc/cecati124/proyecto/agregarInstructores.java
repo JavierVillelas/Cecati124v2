@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class agregarInstructores extends AppCompatActivity{
+public class agregarInstructores extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner spTipo;
     Button boton;
     EditText nombres, apellidos, telefono, direccion, correo, contrasena1, contrasena2;
@@ -33,7 +33,7 @@ public class agregarInstructores extends AppCompatActivity{
     ArrayAdapter<String> aaTipo;
     String [] opcTipo = new String []{"Externo", "Plantilla", "Capacitacion"};
     private RequestQueue requestQueue;
-    private static final String URL ="http://201.171.236.126:8080/modeloAndroid/guardarInstructor.php";
+    private static final String URL ="http://201.171.236.126:8080/modeloAndroid/login.php";
     private StringRequest request;
 
     @Override
@@ -50,9 +50,9 @@ public class agregarInstructores extends AppCompatActivity{
         contrasena2=(EditText) findViewById(R.id.etContrasena2);
         boton=(Button) findViewById(R.id.btnIngresar);
 
-     //   spTipo.setOnItemSelectedListener(this);
-     //   aaTipo=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, opcTipo);
-     //   spTipo.setAdapter(aaTipo);
+        spTipo.setOnItemSelectedListener(this);
+        aaTipo=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, opcTipo);
+        spTipo.setAdapter(aaTipo);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -62,6 +62,7 @@ public class agregarInstructores extends AppCompatActivity{
             public void onClick(View view) {
                 request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     public void onResponse(String response) {
+                        Toast.makeText(getApplicationContext(),"hasta aqui llego", Toast.LENGTH_SHORT).show();
                         try {
                             JSONObject objeto = new JSONObject(response);
                             if(objeto.names().get(0).equals("si")){
@@ -70,6 +71,7 @@ public class agregarInstructores extends AppCompatActivity{
                             }else if(objeto.names().get(0).equals("existe")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("no"), Toast.LENGTH_SHORT).show();
                             }
+
                         } catch (JSONException e) {
 
                             e.printStackTrace();
@@ -88,6 +90,7 @@ public class agregarInstructores extends AppCompatActivity{
                         hashMap.put("telefono", telefono.getText().toString());
                         hashMap.put("direccion", direccion.getText().toString());
                         hashMap.put("correo", correo.getText().toString());
+                        hashMap.put("spTipo", spTipo.getOnItemSelectedListener().toString());
                         hashMap.put("contrasena1", contrasena1.getText().toString());
                         hashMap.put("contrasena2", contrasena2.getText().toString());
                         return hashMap;
@@ -103,5 +106,13 @@ public class agregarInstructores extends AppCompatActivity{
         startActivity(intent);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
