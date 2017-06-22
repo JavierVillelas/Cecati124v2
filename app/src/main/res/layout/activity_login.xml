@@ -80,13 +80,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="27dp"
         android:layout_weight="0.05"
         android:background="@drawable/style_buttom"
-        android:onClick="principal"
         android:text="@string/ingresar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="34dp"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <TextView
