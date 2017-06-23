@@ -64,10 +64,15 @@ public class login extends AppCompatActivity{
                                 Toast.makeText(getApplicationContext(), objeto.getString("no"), Toast.LENGTH_SHORT).show();
                             }else if(objeto.names().get(0).equals("falta")){
                             Toast.makeText(getApplicationContext(), objeto.getString("falta"), Toast.LENGTH_SHORT).show();
-                        }
+                            }else if(objeto.names().get(0).equals("desactivado")){
+                                Toast.makeText(getApplicationContext(), objeto.getString("desactivado"), Toast.LENGTH_SHORT).show();
+                            }else if(objeto.names().get(0).equals("dentro")){
+                                Toast.makeText(getApplicationContext(), objeto.getString("dentro"), Toast.LENGTH_SHORT).show();
+                            }else if(objeto.names().get(0).equals("bloqueado")){
+                                Toast.makeText(getApplicationContext(), objeto.getString("bloqueado"), Toast.LENGTH_SHORT).show();
+                            }
 
 
-                            
                         } catch (JSONException e) {
 
                             e.printStackTrace();

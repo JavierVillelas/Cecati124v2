@@ -21,7 +21,7 @@
         <activity android:name=".perfil" />
         <activity android:name=".listaInstructores" />
         <activity android:name=".agregarInstructores" />
-        <activity android:name=".listaEspecialidad"></activity>
+        <activity android:name=".listaEspecialidad" />
     </application>
 
 </manifest>

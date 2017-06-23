@@ -33,7 +33,7 @@ public class agregarInstructores extends AppCompatActivity implements AdapterVie
     ArrayAdapter<String> aaTipo;
     String [] opcTipo = new String []{"Externo", "Plantilla", "Capacitacion"};
     private RequestQueue requestQueue;
-    private static final String URL ="http://201.171.236.126:8080/modeloAndroid/login.php";
+    private static final String URL ="http://201.171.236.126:8080/modeloAndroid/guardarInstructor.php";
     private StringRequest request;
 
     @Override
@@ -48,7 +48,7 @@ public class agregarInstructores extends AppCompatActivity implements AdapterVie
         correo=(EditText) findViewById(R.id.etCorreo);
         contrasena1=(EditText) findViewById(R.id.etContrasena1);
         contrasena2=(EditText) findViewById(R.id.etContrasena2);
-        boton=(Button) findViewById(R.id.btnIngresar);
+        boton=(Button) findViewById(R.id.btnAgregar);
 
         spTipo.setOnItemSelectedListener(this);
         aaTipo=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, opcTipo);
@@ -62,16 +62,16 @@ public class agregarInstructores extends AppCompatActivity implements AdapterVie
             public void onClick(View view) {
                 request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(),"hasta aqui llego", Toast.LENGTH_SHORT).show();
                         try {
                             JSONObject objeto = new JSONObject(response);
                             if(objeto.names().get(0).equals("si")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("si"), Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),perfil.class));
-                            }else if(objeto.names().get(0).equals("existe")){
+                            }else if(objeto.names().get(0).equals("no")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("no"), Toast.LENGTH_SHORT).show();
+                            }else if(objeto.names().get(0).equals("falta")){
+                                Toast.makeText(getApplicationContext(), objeto.getString("falta"), Toast.LENGTH_SHORT).show();
                             }
-
                         } catch (JSONException e) {
 
                             e.printStackTrace();
@@ -83,7 +83,7 @@ public class agregarInstructores extends AppCompatActivity implements AdapterVie
                         //Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 }) {
-                    protected Map<String,String> getParams() throws AuthFailureError {
+                    protected  Map<String,String> getParams() throws AuthFailureError{
                         HashMap<String, String> hashMap = new HashMap <String, String>();
                         hashMap.put("nombres", nombres.getText().toString());
                         hashMap.put("apellidos", apellidos.getText().toString());
@@ -93,6 +93,7 @@ public class agregarInstructores extends AppCompatActivity implements AdapterVie
                         hashMap.put("spTipo", spTipo.getOnItemSelectedListener().toString());
                         hashMap.put("contrasena1", contrasena1.getText().toString());
                         hashMap.put("contrasena2", contrasena2.getText().toString());
+
                         return hashMap;
                     }
                 };
