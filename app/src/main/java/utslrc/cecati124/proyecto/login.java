@@ -34,7 +34,7 @@ public class login extends AppCompatActivity{
     EditText nombre, contrasena;
     ProgressBar barra;
     private RequestQueue requestQueue;
-    private static final String URL ="http://201.171.236.126:8080/modeloAndroid/login.php";
+    private static final String URL ="http://201.143.195.251:8080/modeloAndroid/login.php";
     private StringRequest request;
 
     @Override
@@ -51,7 +51,6 @@ public class login extends AppCompatActivity{
 
        // anadirVistas();
         boton.setOnClickListener(new View.OnClickListener(){
-
             public void onClick(View view) {
                 request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     public void onResponse(String response) {
@@ -59,7 +58,7 @@ public class login extends AppCompatActivity{
                             JSONObject objeto = new JSONObject(response);
                             if(objeto.names().get(0).equals("si")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("si"), Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),perfil.class));
+                                startActivity(new Intent(getApplicationContext(),agregarEspecialidad.class));
                             }else if(objeto.names().get(0).equals("no")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("no"), Toast.LENGTH_SHORT).show();
                             }else if(objeto.names().get(0).equals("falta")){
@@ -71,7 +70,6 @@ public class login extends AppCompatActivity{
                             }else if(objeto.names().get(0).equals("bloqueado")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("bloqueado"), Toast.LENGTH_SHORT).show();
                             }
-
 
                         } catch (JSONException e) {
 

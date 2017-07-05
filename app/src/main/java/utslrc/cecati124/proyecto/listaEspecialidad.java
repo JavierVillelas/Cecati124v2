@@ -44,7 +44,7 @@ public class listaEspecialidad extends AppCompatActivity implements AdapterView.
     public void ObtDatos(){
 
         AsyncHttpClient client = new AsyncHttpClient();
-        String url="http://201.171.236.126:8080/modeloAndroid/consultarEspecialidad.php";
+        String url="http://201.143.195.251:8080/modeloAndroid/consultarEspecialidad.php";
         // String url="http://201.171.137.34:8080/modeloAndroid/consultarInstructor.php";
         RequestParams parametros = new RequestParams();
         parametros.put("codigo",r_codigo);
