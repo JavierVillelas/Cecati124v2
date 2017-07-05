@@ -4,6 +4,7 @@
     <string name="listaInstructores">Lista de Instructores</string>
     <string name="listaEspecialidades">Lista de Especialidades</string>
     <string name="agregarInstructores">Agregar Instructores</string>
+    <string name="agregarEspecialidad">Agregar Especialidad</string>
     <string name="title_activity_principal">principal</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>

@@ -14,7 +14,6 @@ import java.util.HashMap;
 
 public class agregarEspecialidad extends AppCompatActivity implements View.OnClickListener{
     private EditText editTextName;
-    private EditText editTextDesg;
 
     private Button buttonAdd;
     private Button buttonView;
@@ -24,8 +23,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_especialidad);
 
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextDesg = (EditText) findViewById(R.id.editTextDesg);
+        editTextName = (EditText) findViewById(R.id.etNombre);
 
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
         buttonView = (Button) findViewById(R.id.buttonView);
@@ -37,8 +35,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
 
     private void addEmployee(){
 
-        final String name = editTextName.getText().toString().trim();
-        final String desg = editTextDesg.getText().toString().trim();
+        final String nombre = editTextName.getText().toString().trim();
 
         class AddEmployee extends AsyncTask<Void,Void,String> {
 
@@ -47,7 +44,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(agregarEspecialidad.this,"Adding...","Wait...",false,false);
+                loading = ProgressDialog.show(agregarEspecialidad.this,"Agregando..","Espere...",false,false);
             }
 
             @Override
@@ -60,8 +57,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
             @Override
             protected String doInBackground(Void... v) {
                 HashMap<String,String> params = new HashMap<>();
-                params.put(config.KEY_EMP_NAME,name);
-                params.put(config.KEY_EMP_DESG,desg);
+                params.put(config.KEY_EMP_NAME,nombre);
 
                 RequestHandler rh = new RequestHandler();
                 String res = rh.sendPostRequest(config.URL_ADD, params);
@@ -80,7 +76,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
         }
 
         if(v == buttonView){
-            startActivity(new Intent(this,listaEspecialidad.class));
+            startActivity(new Intent(this,verEspecialidadTodo.class));
         }
     }
 }
