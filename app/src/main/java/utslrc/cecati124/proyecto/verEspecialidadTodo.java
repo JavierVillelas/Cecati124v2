@@ -44,13 +44,13 @@ public class verEspecialidadTodo extends AppCompatActivity implements ListView.O
 
             for(int i = 0; i<result.length(); i++){
                 JSONObject jo = result.getJSONObject(i);
-                String id = jo.getString(config.TAG_ID);
-                String name = jo.getString(config.TAG_NAME);
+                String id = jo.getString("id");
+                String name = jo.getString("nombre");
 
-                HashMap<String,String> employees = new HashMap<>();
-                employees.put(config.TAG_ID,id);
-                employees.put(config.TAG_NAME,name);
-                list.add(employees);
+                HashMap<String,String> epecialidad = new HashMap<>();
+                epecialidad.put("id",id);
+                epecialidad.put("nombre",name);
+                list.add(epecialidad);
             }
 
         } catch (JSONException e) {
@@ -59,7 +59,7 @@ public class verEspecialidadTodo extends AppCompatActivity implements ListView.O
 
         ListAdapter adapter = new SimpleAdapter(
                         verEspecialidadTodo.this, list, R.layout.list_item,
-                        new String[]{config.TAG_ID,config.TAG_NAME},
+                        new String[]{"id","nombre"},
                         new int[]{R.id.id, R.id.name});
 
         listView.setAdapter(adapter);
@@ -96,10 +96,12 @@ public class verEspecialidadTodo extends AppCompatActivity implements ListView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, listaEspecialidad.class);
+        Intent intent = new Intent(this, verEspecialidad.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
-        String empId = map.get(config.TAG_ID).toString();
-        intent.putExtra(config.EMP_ID,empId);
+        String cod = map.get("id").toString();
+        String nombre = map.get("nombre").toString();
+        intent.putExtra("cod_especialidad",cod);
+        intent.putExtra("nombre",nombre);
         startActivity(intent);
     }
 }

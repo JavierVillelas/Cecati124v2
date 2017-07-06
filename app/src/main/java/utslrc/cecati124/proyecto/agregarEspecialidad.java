@@ -52,12 +52,13 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(agregarEspecialidad.this,s,Toast.LENGTH_LONG).show();
+                startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
             }
 
             @Override
             protected String doInBackground(Void... v) {
                 HashMap<String,String> params = new HashMap<>();
-                params.put(config.KEY_EMP_NAME,nombre);
+                params.put("nombre",nombre);
 
                 RequestHandler rh = new RequestHandler();
                 String res = rh.sendPostRequest(config.URL_ADD, params);

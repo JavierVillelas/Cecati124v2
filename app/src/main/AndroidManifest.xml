@@ -23,7 +23,8 @@
         <activity android:name=".agregarInstructores" />
         <activity android:name=".listaEspecialidad" />
         <activity android:name=".agregarEspecialidad" />
-        <activity android:name=".verEspecialidadTodo"></activity>
+        <activity android:name=".verEspecialidadTodo" />
+        <activity android:name=".verEspecialidad"></activity>
     </application>
 
 </manifest>
