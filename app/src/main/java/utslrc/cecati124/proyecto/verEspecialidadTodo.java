@@ -58,9 +58,9 @@ public class verEspecialidadTodo extends AppCompatActivity implements ListView.O
         }
 
         ListAdapter adapter = new SimpleAdapter(
-                        verEspecialidadTodo.this, list, R.layout.list_item,
-                        new String[]{"id","nombre"},
-                        new int[]{R.id.id, R.id.name});
+            verEspecialidadTodo.this, list, R.layout.list_item,
+            new String[]{"id","nombre"},
+            new int[]{R.id.id, R.id.name});
 
         listView.setAdapter(adapter);
     }

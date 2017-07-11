@@ -58,7 +58,7 @@ public class login extends AppCompatActivity{
                             JSONObject objeto = new JSONObject(response);
                             if(objeto.names().get(0).equals("si")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("si"), Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),agregarEspecialidad.class));
+                                startActivity(new Intent(getApplicationContext(),dashboard.class));
                             }else if(objeto.names().get(0).equals("no")){
                                 Toast.makeText(getApplicationContext(), objeto.getString("no"), Toast.LENGTH_SHORT).show();
                             }else if(objeto.names().get(0).equals("falta")){
