@@ -10,7 +10,7 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="link">
-        <a href="http://201.171.236.126:8080/recuperar.php">Recuperar Contraseña</a>
+        <a href="http://201.143.20.163:8080/recuperar.php">Recuperar Contraseña</a>
     </string>
 
 
@@ -32,4 +32,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_dashboard_v2">dashboardV2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

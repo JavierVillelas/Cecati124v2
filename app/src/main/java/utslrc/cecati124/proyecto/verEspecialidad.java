@@ -172,7 +172,6 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         eliminarEspecialidad();
-                        startActivity(new Intent(verEspecialidad.this,verEspecialidadTodo.class));
                     }
                 });
 

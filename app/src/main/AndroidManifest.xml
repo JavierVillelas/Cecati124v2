@@ -25,10 +25,7 @@
         <activity android:name=".agregarEspecialidad" />
         <activity android:name=".verEspecialidadTodo" />
         <activity android:name=".verEspecialidad" />
-        <activity
-            android:name=".dashboard"
-            android:label="@string/title_activity_dashboard"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".dashboard"></activity>
     </application>
 
 </manifest>

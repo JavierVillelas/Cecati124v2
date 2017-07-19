@@ -34,7 +34,9 @@ public class login extends AppCompatActivity{
     EditText nombre, contrasena;
     ProgressBar barra;
     private RequestQueue requestQueue;
-    private static final String URL ="http://201.143.195.251:8080/modeloAndroid/login.php";
+    //public static String IP ="http://10.10.10.73:8080/";
+    private static String IP ="http://201.143.20.163:8080/";
+    private static final String URL = IP + "modeloAndroid/login.php";
     private StringRequest request;
 
     @Override
