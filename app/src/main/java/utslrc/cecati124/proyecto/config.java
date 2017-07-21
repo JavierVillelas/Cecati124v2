@@ -6,8 +6,8 @@ package utslrc.cecati124.proyecto;
 
 public class config {
     //Address of our scripts of the CRUD
-    public static String IP ="http://201.143.20.163:8080/";
-    //public static String IP ="http://10.10.10.73:8080/";
+    //public static String IP ="http://201.143.20.163:8080/";
+    public static String IP ="http://10.10.10.73:8080/";
 
 
     public static final String URL_ADD= IP + "modeloAndroid/agregarEspecialidad.php";
