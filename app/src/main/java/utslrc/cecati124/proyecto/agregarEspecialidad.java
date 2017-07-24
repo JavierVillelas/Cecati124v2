@@ -52,7 +52,8 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(agregarEspecialidad.this,s,Toast.LENGTH_LONG).show();
-                startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
+                editTextName.setText(null);
+              //  startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
             }
 
             @Override
@@ -77,7 +78,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
         }
 
         if(v == buttonView){
-            startActivity(new Intent(this,verEspecialidadTodo.class));
+            //startActivity(new Intent(this,verEspecialidadTodo.class));
         }
     }
 }

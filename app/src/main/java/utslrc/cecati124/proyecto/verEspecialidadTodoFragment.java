@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -30,12 +31,22 @@ import java.util.HashMap;
 public class verEspecialidadTodoFragment extends Fragment implements ListView.OnItemClickListener{
     private ListView listView;
     private String JSON_STRING;
+    FloatingActionButton fab;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ver_especialidad_todo, container, false);
         listView = (ListView) view.findViewById(R.id.listView);
         listView.setOnItemClickListener(this);
+
+        fab = (FloatingActionButton) view.findViewById(R.id.fabBotonAgregar);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), agregarEspecialidad.class);
+                startActivity(i);
+            }
+        });
         getJSON();
         // Inflate the layout for this fragment
 
