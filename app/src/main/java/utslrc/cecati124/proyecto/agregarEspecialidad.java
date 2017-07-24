@@ -16,7 +16,6 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
     private EditText editTextName;
 
     private Button buttonAdd;
-    private Button buttonView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,9 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
         editTextName = (EditText) findViewById(R.id.etNombre);
 
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
-        buttonView = (Button) findViewById(R.id.buttonView);
 
         //Setting listeners to button
         buttonAdd.setOnClickListener(this);
-        buttonView.setOnClickListener(this);
     }
 
     private void addEmployee(){
@@ -75,10 +72,6 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         if(v == buttonAdd){
             addEmployee();
-        }
-
-        if(v == buttonView){
-            //startActivity(new Intent(this,verEspecialidadTodo.class));
         }
     }
 }

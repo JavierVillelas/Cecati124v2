@@ -47,7 +47,7 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
         btnModificar.setOnClickListener(this);
         btnEliminar.setOnClickListener(this);
 
-        etId.setText(id);
+        etId.setText("Codigo: "+id);
         etNombre.setText(nombre);
 
 
