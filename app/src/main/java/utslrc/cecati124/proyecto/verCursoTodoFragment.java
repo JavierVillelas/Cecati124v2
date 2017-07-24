@@ -38,8 +38,8 @@ public class verCursoTodoFragment extends Fragment implements ListView.OnItemCli
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Intent i = new Intent(getActivity(), agregarEspecialidad.class);
-              //  startActivity(i);
+                Intent e = new Intent(getActivity(), agregarCurso.class);
+                startActivity(e);
             }
         });
         getJSON();

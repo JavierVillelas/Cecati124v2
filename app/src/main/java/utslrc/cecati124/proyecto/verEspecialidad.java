@@ -39,7 +39,7 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
         nombre = intent.getStringExtra("nombre");
 
         etId = (TextView) findViewById(R.id.etId);
-        etNombre = (EditText) findViewById(R.id.etNombre);
+        etNombre = (EditText) findViewById(R.id.etNombre1);
 
         btnModificar = (Button) findViewById(R.id.btnModificar);
         btnEliminar = (Button) findViewById(R.id.btnElimimar);

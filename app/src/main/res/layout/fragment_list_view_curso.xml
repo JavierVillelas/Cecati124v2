@@ -52,7 +52,7 @@
 
         <TextView
             android:id="@+id/txtDel"
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="20dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/txtFechaIni"
-            android:layout_width="70dp"
+            android:layout_width="85dp"
             android:layout_height="20dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
@@ -73,9 +73,9 @@
 
         <TextView
             android:id="@+id/txtAl"
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
             android:text="Al:"
             android:textColor="@android:color/background_light"
@@ -84,7 +84,7 @@
 
         <TextView
             android:id="@+id/txtFechaFin"
-            android:layout_width="70dp"
+            android:layout_width="85dp"
             android:layout_height="20dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"

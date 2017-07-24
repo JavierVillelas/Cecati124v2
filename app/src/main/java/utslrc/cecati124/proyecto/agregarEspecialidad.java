@@ -1,7 +1,6 @@
 package utslrc.cecati124.proyecto;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +21,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_especialidad);
 
-        editTextName = (EditText) findViewById(R.id.etNombre);
+        editTextName = (EditText) findViewById(R.id.etNombre1);
 
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
 
@@ -50,7 +49,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
                 loading.dismiss();
                 Toast.makeText(agregarEspecialidad.this,s,Toast.LENGTH_LONG).show();
                 editTextName.setText(null);
-                finishActivity(0);               // startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
+                // startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
             }
 
             @Override

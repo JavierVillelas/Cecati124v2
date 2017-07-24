@@ -3,34 +3,30 @@ package utslrc.cecati124.proyecto;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.HashMap;
 
-
-public class agregarEspecialidadFragment extends Fragment implements View.OnClickListener{
+public class agregarCurso extends AppCompatActivity implements View.OnClickListener{
     private EditText editTextName;
 
     private Button buttonAdd;
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-         View view = inflater.inflate(R.layout.fragment_agregar_especialidad, container, false);
 
-        editTextName = (EditText) view.findViewById(R.id.etNombre1);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_agregar_curso);
 
-        buttonAdd = (Button) view.findViewById(R.id.buttonAdd);
+        editTextName = (EditText) findViewById(R.id.etNombre1);
+
+        buttonAdd = (Button) findViewById(R.id.buttonAdd1);
 
         //Setting listeners to button
-        buttonAdd.setOnClickListener((View.OnClickListener)this);
-
-        return view;
+        buttonAdd.setOnClickListener(this);
     }
 
     private void addEmployee(){
@@ -44,15 +40,16 @@ public class agregarEspecialidadFragment extends Fragment implements View.OnClic
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(getActivity(),"Agregando..","Espere...",false,false);
+                loading = ProgressDialog.show(agregarCurso.this,"Agregando..","Espere...",false,false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(getActivity(),s,Toast.LENGTH_LONG).show();
-               // startActivity(new Intent(getActivity(),agregarEspecialidad.class));
+                Toast.makeText(agregarCurso.this,s,Toast.LENGTH_LONG).show();
+                editTextName.setText(null);
+                // startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
             }
 
             @Override
@@ -70,11 +67,10 @@ public class agregarEspecialidadFragment extends Fragment implements View.OnClic
         ae.execute();
     }
 
-
+    @Override
     public void onClick(View v) {
         if(v == buttonAdd){
             addEmployee();
         }
-
     }
 }

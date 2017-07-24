@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etNombre1"
         android:layout_width="262dp"
         android:layout_height="51dp"
         android:layout_marginLeft="8dp"
@@ -57,7 +57,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/etNombre1" />
 
     <Button
         android:id="@+id/btnElimimar"

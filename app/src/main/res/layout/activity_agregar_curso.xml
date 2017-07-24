@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
-    tools:context="utslrc.cecati124.proyecto.agregarEspecialidad">
+    android:background="@drawable/fondo2"
+    tools:context="utslrc.cecati124.proyecto.agregarCurso">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -32,7 +32,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="39dp"
-        android:text="@string/agregarEspecialidad"
+        android:text="Agregar Curso"
         android:textColor="@color/windowBackground"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -86,7 +86,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/buttonAdd"
+            android:id="@+id/buttonAdd1"
             android:layout_width="219dp"
             android:layout_height="39dp"
             android:layout_marginLeft="8dp"

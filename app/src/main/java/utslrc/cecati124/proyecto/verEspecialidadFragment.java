@@ -1,10 +1,7 @@
 package utslrc.cecati124.proyecto;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,7 +36,7 @@ public class verEspecialidadFragment extends Fragment implements View.OnClickLis
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ver_especialidad, container, false);
         etId = (TextView) view.findViewById(R.id.etId);
-        etNombre = (EditText) view.findViewById(R.id.etNombre);
+        etNombre = (EditText) view.findViewById(R.id.etNombre1);
 
         btnModificar = (Button) view.findViewById(R.id.btnModificar);
         btnEliminar = (Button) view.findViewById(R.id.btnElimimar);
