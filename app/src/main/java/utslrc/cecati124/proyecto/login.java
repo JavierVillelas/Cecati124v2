@@ -4,9 +4,11 @@ import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.SystemClock;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +34,8 @@ import java.util.Map;
 public class login extends AppCompatActivity{
     Button boton;
     EditText nombre, contrasena;
-    ProgressBar barra;
+    TextInputLayout impnombre, impcontrasena;
+
     private RequestQueue requestQueue;
     public static String IP ="http://10.10.10.73:8080/";
     //private static String IP ="http://201.143.20.163:8080/";
@@ -46,6 +49,9 @@ public class login extends AppCompatActivity{
         boton=(Button) findViewById(R.id.btnIngresar);
         nombre=(EditText) findViewById(R.id.etCorreo);
         contrasena=(EditText) findViewById(R.id.etPassword);
+        impnombre = (TextInputLayout) findViewById(R.id.impCorreo);
+        impcontrasena = (TextInputLayout) findViewById(R.id.impPassword);
+
         requestQueue = Volley.newRequestQueue(this);
 
         TextView recupera = (TextView) findViewById(R.id.link);
@@ -54,52 +60,50 @@ public class login extends AppCompatActivity{
        // anadirVistas();
         boton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject objeto = new JSONObject(response);
-                            if(objeto.names().get(0).equals("si")){
-                                Toast.makeText(getApplicationContext(), objeto.getString("si"), Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),dashboard.class));
-                            }else if(objeto.names().get(0).equals("no")){
-                                Toast.makeText(getApplicationContext(), objeto.getString("no"), Toast.LENGTH_SHORT).show();
-                            }else if(objeto.names().get(0).equals("falta")){
-                            Toast.makeText(getApplicationContext(), objeto.getString("falta"), Toast.LENGTH_SHORT).show();
-                            }else if(objeto.names().get(0).equals("desactivado")){
-                                Toast.makeText(getApplicationContext(), objeto.getString("desactivado"), Toast.LENGTH_SHORT).show();
-                            }else if(objeto.names().get(0).equals("dentro")){
-                                Toast.makeText(getApplicationContext(), objeto.getString("dentro"), Toast.LENGTH_SHORT).show();
-                            }else if(objeto.names().get(0).equals("bloqueado")){
-                                Toast.makeText(getApplicationContext(), objeto.getString("bloqueado"), Toast.LENGTH_SHORT).show();
+
+                if(Patterns.EMAIL_ADDRESS.matcher(nombre.getText().toString()).matches()==false){
+                    impnombre.setError("El correo es invalido");
+                }else{
+                    impnombre.setError(null);
+                    request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject objeto = new JSONObject(response);
+                                if(objeto.names().get(0).equals("si")){
+                                    Toast.makeText(getApplicationContext(), objeto.getString("si"), Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(),dashboard.class));
+                                }else if(objeto.names().get(0).equals("no")){
+                                    Toast.makeText(getApplicationContext(), objeto.getString("no"), Toast.LENGTH_SHORT).show();
+                                }else if(objeto.names().get(0).equals("falta")){
+                                    Toast.makeText(getApplicationContext(), objeto.getString("falta"), Toast.LENGTH_SHORT).show();
+                                }else if(objeto.names().get(0).equals("desactivado")){
+                                    Toast.makeText(getApplicationContext(), objeto.getString("desactivado"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+
+                                e.printStackTrace();
                             }
 
-                        } catch (JSONException e) {
-
-                            e.printStackTrace();
                         }
+                    }, new Response.ErrorListener() {
+                        public void onErrorResponse(VolleyError error) {
+                            //Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }) {
+                        protected  Map<String,String> getParams() throws AuthFailureError{
+                            HashMap<String, String> hashMap = new HashMap <String, String>();
+                            hashMap.put("correo", nombre.getText().toString());
+                            hashMap.put("contrasena", contrasena.getText().toString());
 
-                    }
-                }, new Response.ErrorListener() {
-                    public void onErrorResponse(VolleyError error) {
-                        //Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                    }
-                }) {
-                    protected  Map<String,String> getParams() throws AuthFailureError{
-                        HashMap<String, String> hashMap = new HashMap <String, String>();
-                        hashMap.put("correo", nombre.getText().toString());
-                        hashMap.put("contrasena", contrasena.getText().toString());
+                            return hashMap;
+                        }
+                    };
+                    requestQueue.add(request);
+                }
 
-                        return hashMap;
-                    }
-                };
-                requestQueue.add(request);
             }
         });
-    }
-
-    private void anadirVistas(){
-        barra = (ProgressBar) findViewById(R.id.progressBar);
-        barra.setProgress(0);
     }
 
     public void principal(View view){
@@ -110,27 +114,4 @@ public class login extends AppCompatActivity{
         startActivity(intent);
     }
 
-
-
-    public class AsyncTask_load extends AsyncTask<Void, Integer, Void>{
-        int progreso;
-
-        protected void onPreExecute(){
-         //   Toast.makeText(login.this, "onPreExecute", Toast.LENGTH_SHORT).show();
-            progreso = 0;
-        }
-
-        protected Void doInBackground(Void... params){
-            while(progreso<100){
-                progreso++;
-                publishProgress(progreso);
-                SystemClock.sleep(20);
-            }
-            return null;
-        }
-
-        protected void onProgressUpdate(Integer... values){
-            barra.setProgress(values[0]);
-        }
-    }
 }

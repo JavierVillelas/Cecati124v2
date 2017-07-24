@@ -3,4 +3,7 @@
     <color name="colorPrimary">#b20202</color>
     <color name="colorPrimaryDark">#e90813</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
 </resources>

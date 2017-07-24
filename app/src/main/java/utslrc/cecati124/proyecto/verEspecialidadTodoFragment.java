@@ -109,17 +109,23 @@ public class verEspecialidadTodoFragment extends Fragment implements ListView.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Intent intent = new Intent(getActivity(), verEspecialidad.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
-        String cod = map.get("id").toString();
-        String nombre = map.get("nombre").toString();
+        //String cod = map.get("id").toString();
+        //String nombre = map.get("nombre").toString();
         //intent.putExtra("cod_especialidad",cod);
         //intent.putExtra("nombre",nombre);
         //startActivity(intent);
 
-        agregarEspecialidadFragment agregar = new agregarEspecialidadFragment();
+        verEspecialidadFragment agregar = new verEspecialidadFragment();
+        Bundle caja = new Bundle();
+        String cod = ("id").toString();
+        String nombre = ("nombre").toString();
+        caja.putString("cod_especialidad",cod);
+        caja.putString("nombre",nombre);
+        agregar.setArguments(caja);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment, agregar, agregar.getTag());
+        transaction.replace(R.id.fragmentos, agregar);
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-       // transaction.addToBackStack(null);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 

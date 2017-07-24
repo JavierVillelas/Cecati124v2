@@ -1,13 +1,17 @@
 package utslrc.cecati124.proyecto;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +23,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class verEspecialidad extends AppCompatActivity implements View.OnClickListener{
+
+public class verEspecialidadFragment extends Fragment implements View.OnClickListener{
     private TextView etId;
     private EditText etNombre;
 
@@ -29,29 +34,27 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
     private String id;
     private String nombre;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ver_especialidad);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_ver_especialidad, container, false);
+        etId = (TextView) view.findViewById(R.id.etId);
+        etNombre = (EditText) view.findViewById(R.id.etNombre);
 
-        Intent intent = getIntent();
-
-       // id = intent.getStringExtra("cod_especialidad");
-        nombre = intent.getStringExtra("nombre");
-
-        etId = (TextView) findViewById(R.id.etId);
-        etNombre = (EditText) findViewById(R.id.etNombre);
-
-        btnModificar = (Button) findViewById(R.id.btnModificar);
-        btnEliminar = (Button) findViewById(R.id.btnElimimar);
+        btnModificar = (Button) view.findViewById(R.id.btnModificar);
+        btnEliminar = (Button) view.findViewById(R.id.btnElimimar);
 
         btnModificar.setOnClickListener(this);
         btnEliminar.setOnClickListener(this);
+        id = getArguments().getString("cod_especialidad");
+        nombre = getArguments().getString("nombre");
 
         etId.setText(id);
         etNombre.setText(nombre);
 
 
         getEspecialidad();
+        return view;
     }
 
     private void getEspecialidad(){
@@ -60,7 +63,7 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(verEspecialidad.this,"Cargando...","Espere...",false,false);
+                loading = ProgressDialog.show(getActivity(),"Cargando...","Espere...",false,false);
             }
 
             @Override
@@ -104,15 +107,15 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(verEspecialidad.this,"Modificando...","Espere...",false,false);
+                loading = ProgressDialog.show(getActivity(),"Modificando...","Espere...",false,false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(verEspecialidad.this,s, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(verEspecialidad.this,verEspecialidadTodo.class));
+                Toast.makeText(getActivity(),s, Toast.LENGTH_LONG).show();
+               // startActivity(new Intent(getActivity(),verEspecialidadTodo.class));
             }
 
             @Override
@@ -140,15 +143,15 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(verEspecialidad.this, "Actualizando...", "Espere...", false, false);
+                loading = ProgressDialog.show(getActivity(), "Actualizando...", "Espere...", false, false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(verEspecialidad.this, s, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(verEspecialidad.this,verEspecialidadTodo.class));
+                Toast.makeText(getActivity(), s, Toast.LENGTH_LONG).show();
+               // startActivity(new Intent(getActivity(),verEspecialidadTodo.class));
             }
 
             @Override
@@ -164,7 +167,7 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
     }
 
     private void confirElimar(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         alertDialogBuilder.setMessage("Esta Seguro de eliminar Especialidad?");
 
         alertDialogBuilder.setPositiveButton("Yes",
