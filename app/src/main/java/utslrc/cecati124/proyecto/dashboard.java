@@ -101,7 +101,7 @@ public class dashboard extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new dashboardFragment(), "Inicio");
-        adapter.addFragment(new cursoFragment(), "Cursos");
+        adapter.addFragment(new verCursoTodoFragment(), "Cursos");
         adapter.addFragment(new instructorFragment(), "Instructores");
         adapter.addFragment(new  verEspecialidadTodoFragment(), "Especialidades");
         viewPager.setAdapter(adapter);

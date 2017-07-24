@@ -23,15 +23,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-
-public class verEspecialidadTodoFragment extends Fragment implements ListView.OnItemClickListener{
+public class verCursoTodoFragment extends Fragment implements ListView.OnItemClickListener{
     private ListView listView;
     private String JSON_STRING;
     FloatingActionButton fab;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ver_especialidad_todo, container, false);
+        View view = inflater.inflate(R.layout.fragment_ver_curso_todo, container, false);
         listView = (ListView) view.findViewById(R.id.listView);
         listView.setOnItemClickListener(this);
 
@@ -39,8 +38,8 @@ public class verEspecialidadTodoFragment extends Fragment implements ListView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), agregarEspecialidad.class);
-                startActivity(i);
+              //  Intent i = new Intent(getActivity(), agregarEspecialidad.class);
+              //  startActivity(i);
             }
         });
         getJSON();
@@ -62,11 +61,20 @@ public class verEspecialidadTodoFragment extends Fragment implements ListView.On
                 JSONObject jo = result.getJSONObject(i);
                 String id = jo.getString("id");
                 String name = jo.getString("nombre");
+                String instructor = jo.getString("instNombres")+ " " +jo.getString("instApellidos");
+                String fechaini = jo.getString("fechaini");
+                String fechafin = jo.getString("fechafin");
+                String horario = jo.getString("horario");
 
-                HashMap<String,String> epecialidad = new HashMap<>();
-                epecialidad.put("id",id);
-                epecialidad.put("nombre",name);
-                list.add(epecialidad);
+                HashMap<String,String> curso = new HashMap<>();
+                curso.put("id",id);
+                curso.put("nombre",name);
+                curso.put("instructor", instructor);
+                curso.put("fechaini", fechaini);
+                curso.put("fechafin", fechafin);
+                curso.put("horario", horario);
+
+                list.add(curso);
             }
 
         } catch (JSONException e) {
@@ -75,9 +83,9 @@ public class verEspecialidadTodoFragment extends Fragment implements ListView.On
 
 
         ListAdapter adapter = new SimpleAdapter(
-                getActivity(), list, R.layout.fragment_list_view_especialidad,
-                new String[]{"id","nombre"},
-                new int[]{R.id.txtId, R.id.txtNombre});
+                getActivity(), list, R.layout.fragment_list_view_curso,
+                new String[]{"id","nombre", "instructor", "fechaini", "fechafin", "horario"},
+                new int[]{R.id.txtId, R.id.txtNombre, R.id.txtInstructor, R.id.txtFechaIni, R.id.txtFechaFin, R.id.txtHorario1});
 
         listView.setAdapter(adapter);
     }
@@ -103,7 +111,7 @@ public class verEspecialidadTodoFragment extends Fragment implements ListView.On
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(config.URL_GET_ALL);
+                String s = rh.sendGetRequest(config.URL_todos_cursos);
                 return s;
             }
 
@@ -114,26 +122,26 @@ public class verEspecialidadTodoFragment extends Fragment implements ListView.On
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(getActivity(), verEspecialidad.class);
+        //Intent intent = new Intent(getActivity(), verEspecialidad.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
-        String cod = map.get("id").toString();
-        String nombre = map.get("nombre").toString();
-        intent.putExtra("cod_especialidad",cod);
-        intent.putExtra("nombre",nombre);
-        startActivity(intent);
+        //String cod = map.get("id").toString();
+        //String nombre = map.get("nombre").toString();
+        //intent.putExtra("cod_especialidad",cod);
+        //intent.putExtra("nombre",nombre);
+        //startActivity(intent);
 
-       // verEspecialidadFragment agregar = new verEspecialidadFragment();
-        //Bundle caja = new Bundle();
-        //String cod = ("id").toString();
-        //String nombre = ("nombre").toString();
-        //caja.putString("cod_especialidad",cod);
-        //caja.putString("nombre",nombre);
-        //agregar.setArguments(caja);
-        //FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        //transaction.replace(R.id.fragmentos, agregar);
-        //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        //transaction.addToBackStack(null);
-        //transaction.commit();
+        verEspecialidadFragment agregar = new verEspecialidadFragment();
+        Bundle caja = new Bundle();
+        String cod = ("id").toString();
+        String nombre = ("nombre").toString();
+        caja.putString("cod_especialidad",cod);
+        caja.putString("nombre",nombre);
+        agregar.setArguments(caja);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentos, agregar);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }

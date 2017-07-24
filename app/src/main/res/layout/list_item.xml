@@ -7,7 +7,7 @@
     tools:context="utslrc.cecati124.proyecto.agregarEspecialidad">
 
     <TextView
-        android:id="@+id/id"
+        android:id="@+id/txtId"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="48dp"
@@ -16,13 +16,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/txtNombre"
         android:layout_width="220dp"
         android:layout_height="30dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="29dp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/id"
+        app:layout_constraintLeft_toRightOf="@+id/txtId"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="2dp" />
 

@@ -35,7 +35,7 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = getIntent();
 
-       // id = intent.getStringExtra("cod_especialidad");
+        id = intent.getStringExtra("cod_especialidad");
         nombre = intent.getStringExtra("nombre");
 
         etId = (TextView) findViewById(R.id.etId);

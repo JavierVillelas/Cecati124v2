@@ -53,7 +53,7 @@ public class agregarEspecialidad extends AppCompatActivity implements View.OnCli
                 loading.dismiss();
                 Toast.makeText(agregarEspecialidad.this,s,Toast.LENGTH_LONG).show();
                 editTextName.setText(null);
-              //  startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
+                finishActivity(0);               // startActivity(new Intent(agregarEspecialidad.this,agregarEspecialidad.class));
             }
 
             @Override
