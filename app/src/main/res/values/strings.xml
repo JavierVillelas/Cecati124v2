@@ -10,7 +10,7 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="link">
-        <a href="http://201.143.20.163:8080/recuperar.php">Recuperar Contraseña</a>
+        <a href="http://201.171.140.107:8080/recuperar.php">Recuperar Contraseña</a>
     </string>
 
 

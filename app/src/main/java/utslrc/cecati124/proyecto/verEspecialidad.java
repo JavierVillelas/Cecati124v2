@@ -112,7 +112,7 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(verEspecialidad.this,s, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(verEspecialidad.this,verEspecialidadTodo.class));
+             //   startActivity(new Intent(verEspecialidad.this,verEspecialidadTodo.class));
             }
 
             @Override
@@ -148,7 +148,9 @@ public class verEspecialidad extends AppCompatActivity implements View.OnClickLi
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(verEspecialidad.this, s, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(verEspecialidad.this,verEspecialidadTodo.class));
+                etNombre.setText(null);
+                etId.setText("Codigo: ");
+             //   startActivity(new Intent(verEspecialidad.this,verEspecialidadTodo.class));
             }
 
             @Override

@@ -6,7 +6,7 @@ package utslrc.cecati124.proyecto;
 
 public class config {
     //Address of our scripts of the CRUD
-    public static String IP ="http://201.143.20.163:8080/";
+    public static String IP ="http://201.171.140.107:8080/";
     //public static String IP ="http://10.10.10.73:8080/";
 
 
@@ -27,10 +27,7 @@ public class config {
 
     //JSON Tags
     public static final String TAG_JSON_ARRAY="result";
-    public static final String TAG_ID = "id";
-    public static final String TAG_NAME = "name";
-    public static final String TAG_DESG = "desg";
-    public static final String TAG_SAL = "salary";
+
 
     //employee id to pass with intent
     public static final String EMP_ID = "emp_id";

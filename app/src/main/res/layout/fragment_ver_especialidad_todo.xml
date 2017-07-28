@@ -48,6 +48,8 @@
         android:layout_marginTop="35dp"
         android:layout_gravity="top|end"
         android:layout_margin="15sp"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
         android:src="@drawable/plus"
          />
 
